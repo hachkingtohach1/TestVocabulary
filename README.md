@@ -9,39 +9,40 @@ class TestVocabularyEnglish {
 
 	private $listvocabulary = [];
 	
-	public function enable(){		
+	public function enable(){
+	    echo "version: 1.1\n"
 	    echo "----- Danh sách lệnh -----\n";
 	    echo "Thêm từ bằng cách .add\n";
 		echo "Xóa từ bằng cách .delete\n";
 		echo "Bắt đầu kiểm tra .start\n";
 		echo "Kiểm tra từ vựng để kiểm tra trong danh sách .listvoc\n";
 		echo "--------------------------\n";
-        $this->openCommand();	
+		$this->openCommand();
 	}
 	
 	public function clearChat(){
-		echo "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";	
+		echo "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 	}
 	
 	public function openCommand(){
 		fscanf(STDIN, "%s", $command);
-        $this->typeCommands($command);
+		$this->typeCommands($command);
 	}
 	
 	public function typeCommands(string $type){
 		switch($type){
 			case ".add":
-				echo "Ghi 1 từ vựng(ví dụ: apple):\n";
+				echo "Ghi 1 từ vựng(ví dụ: apple) (nếu bạn muốn cách thì để '_'):\n";
 				fscanf(STDIN, "%s", $vocabulary);
-				echo "Nghĩa của từ này là?(nếu bạn muốn cách thì để '_'\n";
+				echo "Nghĩa của từ này là? (nếu bạn muốn cách thì để '_')\n";
 				fscanf(STDIN, "%s", $mean);
-				$this->listvocabulary[$mean] = $vocabulary;
+                $this->listvocabulary[$mean] = $vocabulary;
 				echo "Đã thêm từ thành công!\n";
 				$this->clearChat();
-				$this->openCommand();	
+				$this->openCommand();
 			break;
 			case ".delete":
-				echo "Giờ hãy điền từ bạn cần xóa trong danh sách:\n";
+				echo "Giờ hãy điền từ bạn cần xóa trong danh sách (nếu bạn muốn cách thì để '_'):\n";
 				fscanf(STDIN, "%s", $delete);
 				foreach($this->listvocabulary as $mean => $vocabulary){
 					if($vocabulary === $delete){
@@ -65,7 +66,7 @@ class TestVocabularyEnglish {
 				$this->testing($type, $vocabulary);
 			break;
 			case ".listvoc":
-			    $this->showlistvocabulary();
+                $this->showlistvocabulary();
 			break;
 			default: $this->openCommand();
 		}
