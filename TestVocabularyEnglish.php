@@ -5,7 +5,7 @@ class TestVocabularyEnglish {
 	private $listvocabulary = [];
 	
 	public function enable(){
-	    echo "version: 1.1\n"
+	    echo "version: 1.1\n";
 	    echo "----- Danh sách lệnh -----\n";
 	    echo "Thêm từ bằng cách .add\n";
 		echo "Xóa từ bằng cách .delete\n";
